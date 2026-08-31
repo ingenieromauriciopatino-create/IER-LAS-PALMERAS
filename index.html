@@ -8,16 +8,42 @@
 <link rel="icon" href="assets/img/escudo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
 
+<!-- Interruptor de color / escala de grises.
+     Es una casilla real: funciona solo con CSS, sin JavaScript. -->
+<input type="checkbox" id="modoGrises" class="interruptor-vista">
+
+<div class="lienzo">
+
+<!-- Velo de transición: tres franjas de la bandera que barren la
+     pantalla al cambiar entre color y escala de grises.
+     Es puramente decorativo y no recibe clics. -->
+<div class="velo-transicion" aria-hidden="true">
+  <span class="franja franja--verde"></span>
+  <span class="franja franja--blanca"></span>
+  <span class="franja franja--roja"></span>
+</div>
+
 <!-- ======================= BARRA SUPERIOR ======================= -->
 <div class="barra-utilidad">
   <div class="envoltura">
-    <span>Vereda Las Palmeras &middot; Valle del Guamuez, Putumayo</span>
-    <span>Secretaría: <a href="tel:+570000000000">(000) 000 0000</a> &middot; <a href="mailto:contacto@ierlaspalmeras.edu.co">contacto@ierlaspalmeras.edu.co</a></span>
+    <span>Vereda Loro Uno &middot; Valle del Guamuez, Putumayo</span>
+    <span class="utilidad-derecha">
+      Secretaría: <a href="tel:+570000000000">(000) 000 0000</a> &middot; <a href="mailto:contacto@ierlaspalmeras.edu.co">contacto@ierlaspalmeras.edu.co</a>
+      <label for="modoGrises" class="boton-vista"
+             title="Cambiar entre color y escala de grises">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/>
+        </svg>
+        <span class="texto-a">Escala de grises</span>
+        <span class="texto-b">Ver a color</span>
+      </label>
+    </span>
   </div>
 </div>
 
@@ -33,10 +59,12 @@
 
     <nav class="menu" id="menu" aria-label="Menú principal">
       <a href="#quienes-somos">Quiénes somos</a>
+      <a href="#sedes">Sedes</a>
       <a href="#centros">Centros de interés</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#novedades">Novedades</a>
       <a href="#orientacion">Orientación</a>
+      <a href="#gobierno">Gobierno estudiantil</a>
       <a href="#docentes">Docentes</a>
       <a href="#manual">Manual de convivencia</a>
     </nav>
@@ -215,6 +243,61 @@
   </div>
 </section>
 
+<!-- ======================= SEDES ======================= -->
+<section class="seccion aparece" id="sedes">
+  <div class="envoltura">
+    <div class="titulo-seccion">
+      <h2>Nuestras sedes</h2>
+      <p>La institución atiende a las familias de tres veredas del Valle del Guamuez.</p>
+    </div>
+
+    <div class="sedes escalona">
+
+      <article class="sede sede--principal">
+        <span class="etiqueta-sede">Sede principal</span>
+        <h3>Institución Educativa Rural Las Palmeras</h3>
+        <p class="ubicacion-sede">Vereda Loro Uno</p>
+        <p><span class="pendiente">Describe brevemente esta sede: niveles que ofrece (preescolar, básica, media), número aproximado de estudiantes y jornada.</span></p>
+      </article>
+
+      <article class="sede">
+        <span class="etiqueta-sede">Sede</span>
+        <h3>Sede San Roberto</h3>
+        <p class="ubicacion-sede">Vereda Loro Dos</p>
+        <p><span class="pendiente">Describe brevemente esta sede: niveles que ofrece, número aproximado de estudiantes y jornada.</span></p>
+      </article>
+
+      <article class="sede">
+        <span class="etiqueta-sede">Sede</span>
+        <h3><span class="pendiente">Nombre de la sede</span></h3>
+        <p class="ubicacion-sede">Vereda La Florida</p>
+        <p><span class="pendiente">Describe brevemente esta sede: niveles que ofrece, número aproximado de estudiantes y jornada.</span></p>
+      </article>
+
+    </div>
+
+    <!-- Mapa de la sede principal.
+         Para cambiar el punto: reemplaza las coordenadas en la URL
+         (formato: latitud,longitud). Sin clave de API ni costo. -->
+    <div class="mapa-sede">
+      <h3>Cómo llegar a la sede principal</h3>
+      <div class="marco-mapa">
+        <iframe
+          title="Mapa de la Institución Educativa Rural Las Palmeras, Vereda Loro Uno"
+          src="https://www.google.com/maps?q=0.3811089,-76.9005032&hl=es&z=15&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+      <p class="pie-mapa">
+        Vereda Loro Uno, Valle del Guamuez, Putumayo &middot;
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=0.3811089,-76.9005032"
+           target="_blank" rel="noopener">Abrir en Google Maps</a>
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= PROYECTOS INSTITUCIONALES ======================= -->
 <section class="seccion seccion--niebla aparece" id="proyectos">
   <div class="envoltura">
@@ -306,6 +389,47 @@
   </div>
 </section>
 
+<!-- ======================= GOBIERNO ESTUDIANTIL ======================= -->
+<section class="seccion aparece" id="gobierno">
+  <div class="envoltura">
+    <div class="titulo-seccion">
+      <h2>Gobierno estudiantil</h2>
+      <p>Los estudiantes de bachillerato eligen cada año a sus representantes por voto libre y secreto. Es el primer ejercicio ciudadano de nuestra comunidad.</p>
+    </div>
+
+    <div class="gobierno escalona">
+
+      <article class="cargo cargo--personero">
+        <div class="cargo-marca" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.6 12.2 2.3 2.3 4.5-4.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Personero estudiantil</h3>
+        <p class="periodo"><span class="pendiente">Año lectivo</span></p>
+        <p class="nombre-cargo"><span class="pendiente">Nombre del estudiante y grado</span></p>
+        <p>Vela por el cumplimiento de los derechos y deberes de los estudiantes consignados en el manual de convivencia. Recibe y tramita las peticiones de sus compañeros ante las directivas.</p>
+        <p class="contacto-cargo"><span class="pendiente">Cómo contactarlo: correo, horario o lugar de atención.</span></p>
+      </article>
+
+      <article class="cargo cargo--contralor">
+        <div class="cargo-marca" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9m5 11V5m5 15v-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Contralor estudiantil</h3>
+        <p class="periodo"><span class="pendiente">Año lectivo</span></p>
+        <p class="nombre-cargo"><span class="pendiente">Nombre del estudiante y grado</span></p>
+        <p>Promueve el cuidado de los bienes de la institución y hace seguimiento al uso de los recursos y a los proyectos que se ejecutan. Forma en transparencia y en cultura del control social.</p>
+        <p class="contacto-cargo"><span class="pendiente">Cómo contactarlo: correo, horario o lugar de atención.</span></p>
+      </article>
+
+    </div>
+
+    <div class="nota-gobierno">
+      <h3>Cómo se eligen</h3>
+      <p><span class="pendiente">Describe brevemente el proceso: fecha de la jornada electoral, quiénes pueden postularse, quiénes votan y cómo se hace el escrutinio. Si hay más cargos (representante de los estudiantes al consejo directivo, representantes de curso, cabildante estudiantil), agrégalos aquí.</span></p>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= CUERPO DOCENTE ======================= -->
 <section class="seccion seccion--niebla aparece" id="docentes">
   <div class="envoltura">
@@ -368,7 +492,13 @@
         <div>
           <h3>Institución Educativa Rural Las Palmeras</h3>
           <p class="lema-pie">Educando con amor</p>
-          <p>Vereda Las Palmeras<br>Valle del Guamuez, Putumayo, Colombia</p>
+          <p>
+            <b>Sede principal</b><br>Vereda Loro Uno<br>
+            <b>Sede San Roberto</b><br>Vereda Loro Dos<br>
+            <b>Sede La Florida</b><br>Vereda La Florida<br><br>
+            Valle del Guamuez, Putumayo, Colombia
+          </p>
+          <p><a href="#sedes">Ver el mapa de ubicación</a></p>
         </div>
       </div>
 
@@ -397,10 +527,13 @@
   </div>
 </footer>
 
+</div><!-- /.lienzo -->
+
 <script>
   // Menú desplegable en pantallas pequeñas
   const boton = document.getElementById('abreMenu');
   const menu = document.getElementById('menu');
+  if (boton && menu) {
   boton.addEventListener('click', () => {
     const abierto = menu.classList.toggle('abierto');
     boton.setAttribute('aria-expanded', abierto);
@@ -411,6 +544,7 @@
       boton.setAttribute('aria-expanded', 'false');
     }
   });
+  }
 
 
   // Aparición de las secciones al llegar con el scroll
@@ -429,8 +563,23 @@
     animables.forEach(el => el.classList.add('visible'));
   }
 
+  // La vista en escala de grises no usa JavaScript: se controla
+  // con la casilla #modoGrises y CSS. Aquí solo se recuerda la
+  // preferencia entre visitas, si el navegador lo permite.
+  var casilla = document.getElementById('modoGrises');
+  if (casilla) {
+    try {
+      if (localStorage.getItem('vista-palmeras') === 'grises') casilla.checked = true;
+      casilla.addEventListener('change', function () {
+        try { localStorage.setItem('vista-palmeras', casilla.checked ? 'grises' : 'color'); }
+        catch (e) {}
+      });
+    } catch (e) { /* sin almacenamiento disponible */ }
+  }
+
   // Año actual en el pie de página
-  document.getElementById('anio').textContent = new Date().getFullYear();
+  var elAnio = document.getElementById('anio');
+  if (elAnio) elAnio.textContent = new Date().getFullYear();
 </script>
 
 </body>
